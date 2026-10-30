@@ -1,8 +1,14 @@
 {
-  "name": "reimbursement-access-test",
-  "version": "1.0.0",
+  "name": "employee-expenses-deployment",
   "private": true,
+  "version": "1.0.0",
   "type": "module",
-  "engines": { "node": ">=22" },
-  "scripts": { "start": "node server.mjs" }
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "build": "corepack enable && tar -xzf portal-source.tar.gz && cd portal && pnpm install --prod=false --frozen-lockfile --ignore-scripts && pnpm build",
+    "start": "cd portal && exec node server.mjs"
+  }
 }
